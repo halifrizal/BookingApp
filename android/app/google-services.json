@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "120140551497",
+    "project_id": "rizal-booking-project",
+    "storage_bucket": "rizal-booking-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120140551497:android:a7502172b3256cd03ff698",
+        "android_client_info": {
+          "package_name": "com.example.bookingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120140551497-a8u8r2ibmd1euv22gbob7jlmj06rs3tn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn72oxXjxtGbUPOOYtHJ43CzAlq76XCBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120140551497-a8u8r2ibmd1euv22gbob7jlmj06rs3tn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "120140551497-6o3dfdss6iptk0eg2co6mfjhigkaibau.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bookingapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
