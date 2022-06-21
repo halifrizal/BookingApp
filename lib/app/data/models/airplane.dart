@@ -2,7 +2,7 @@
 //
 //     final airPlane = airPlaneFromJson(jsonString);
 
-// Link = https://airplaneapisnodejs.herokuapp.com/data
+// Link = https://airplaneapisnodejs.herokuapp.com/dataPesawat
 
 import 'dart:convert';
 

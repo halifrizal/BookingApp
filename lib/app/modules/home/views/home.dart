@@ -128,7 +128,7 @@ class _HomePageeState extends State<HomePagee> {
             endIndent: 10,
             thickness: 0.2,
           ),
-          //Content 1 Text
+          //Content Hotel Text
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
@@ -151,11 +151,11 @@ class _HomePageeState extends State<HomePagee> {
                   ),
                 ],
               )),
-          //Content 1 Gambar
+          //Content Hotel Data
           Padding(
             padding: const EdgeInsets.only(left: 10, top: 10),
             child: FutureBuilder(
-              future: produkProvider.getRecommendedSpaces(),
+              future: produkProvider.getRecommendedSHotel(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Produk> data = snapshot.data as List<Produk>;
@@ -194,7 +194,7 @@ class _HomePageeState extends State<HomePagee> {
             endIndent: 10,
             thickness: 0.2,
           ),
-          //Content 2 Text
+          //Content Pesawat Text
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
@@ -202,7 +202,7 @@ class _HomePageeState extends State<HomePagee> {
                   Row(
                     children: const [
                       Text(
-                        "Staycation aman, puasa lancar",
+                        "Terbang Aman Liburan Nyaman",
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -213,81 +213,56 @@ class _HomePageeState extends State<HomePagee> {
                   Wrap(
                     children: const [
                       Text(
-                        "Yuk,nginep di hotel yang nyediain makanan sahur dan buka puasa",
+                        "Yuk, Terbang Bersama Kami Ke Destinasi Wisata Tujuan. Mumpung ada Promo Menarik",
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       )
                     ],
                   ),
                 ],
               )),
-          //Content 2 Gambar
+          //Content Pesawat Data
           Padding(
             padding: const EdgeInsets.only(left: 10, top: 10),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: FutureBuilder<List<AirPlane>>(
-                  future: homeC.ambilSemuaData(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Align(
-                        alignment: Alignment.center,
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-
-                    if (!snapshot.hasData) {
-                      return const Center(
-                        child: Text("Tidak Ada Data"),
-                      );
-                    }
-                    List<AirPlane> data = snapshot.data as List<AirPlane>;
-
-                    int index = 0;
-
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: data.map((item) {
-                          index++;
-                          return SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                CardViewAirPlane(
-                                  item,
-                                )
-                              ],
-                            ),
-                          );
-                        }).toList(),
-                      ),
+                future: homeC.ambilSemuaData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  }),
-              // child: Row(
-              //   children: const [
-              // CardView(
-              //   judulP: "Sahid Raya Hotel & Convention Yogyakarta",
-              //   textP: "Depok, Yogyakarta",
-              //   harga: "332.529",
-              //   hargaA: "389.000",
-              //   gambarP: "assets/produkH/sahit.jpg",
-              // ),
-              // CardView(
-              //   judulP: "Aloft Bali Kuta ai Beachwalk",
-              //   textP: "Kuta, Badung",
-              //   harga: "786.016",
-              //   hargaA: "986.000",
-              //   gambarP: "assets/produkH/aloft.jfif",
-              // ),
-              // CardView(
-              //   judulP: "The Papandayan",
-              //   textP: "Lengkong, Bandung",
-              //   harga: "1.028.500",
-              //   hargaA: "833.085",
-              //   gambarP: "assets/produkH/papandayan.webp",
-              // ),
-              //   ],
-              // ),
+                  }
+
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: Text("Tidak Ada Data"),
+                    );
+                  }
+                  List<AirPlane> data = snapshot.data as List<AirPlane>;
+
+                  int index = 0;
+
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: data.map((item) {
+                        index++;
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              CardViewAirPlane(
+                                item,
+                              )
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],

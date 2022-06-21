@@ -6,13 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ProdukProvider extends ChangeNotifier {
-  getRecommendedSpaces() async {
+  getRecommendedSHotel() async {
     var result = await http.get(
       Uri.parse('https://airplaneapisnodejs.herokuapp.com/dataHotel'),
     );
-
-    print(result.statusCode);
-    print(result.body);
 
     if (result.statusCode == 200) {
       List data = jsonDecode(result.body);

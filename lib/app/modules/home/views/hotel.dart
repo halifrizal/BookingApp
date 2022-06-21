@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../widget/card.dart';
-import 'cari_pesawat.dart';
 import 'data_http.dart';
 import 'hasil_cari_pesawat.dart';
 
@@ -157,7 +156,7 @@ class _CardHotelState extends State<CardHotel> {
           Padding(
             padding: const EdgeInsets.only(left: 10, top: 10),
             child: FutureBuilder(
-              future: produkProvider.getRecommendedSpaces(),
+              future: produkProvider.getRecommendedSHotel(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Produk> data = snapshot.data as List<Produk>;
