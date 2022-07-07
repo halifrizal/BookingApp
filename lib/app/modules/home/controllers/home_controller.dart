@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
   Future<List<AirPlane>> ambilSemuaData() async {
-    Uri url = Uri.parse("https://airplaneapisnodejs.herokuapp.com/dataPesawat");
+    Uri url = Uri.parse("https://apismodul.herokuapp.com/pesawat");
     var res = await http.get(url);
 
     List? data = (json.decode(res.body) as List<dynamic>);

@@ -1,5 +1,6 @@
 import 'package:bookingapp/app/modules/akun/views/dataAkun.dart';
 import 'package:bookingapp/app/modules/favorite/views/favorite_view.dart';
+import 'package:bookingapp/app/modules/home/views/post_page.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
@@ -20,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
       const HomePagee(),
       FavoriteView(),
       AkunPage(),
+      PostProviderPage()
     ];
 
     return Scaffold(
@@ -29,6 +31,7 @@ class _HomeViewState extends State<HomeView> {
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.list, title: 'Favorit'),
           TabItem(icon: Icons.people_sharp, title: 'Akun'),
+          TabItem(icon: Icons.people_sharp, title: 'Post'),
         ],
         initialActiveIndex: 0,
         onTap: (int i) {

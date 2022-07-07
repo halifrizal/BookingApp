@@ -1,3 +1,4 @@
+import 'package:bookingapp/app/data/Providers/post_provider.dart';
 import 'package:bookingapp/app/data/Providers/produk_provider.dart';
 import 'package:bookingapp/app/data/models/airplane.dart';
 import 'package:bookingapp/app/data/models/produk.dart';

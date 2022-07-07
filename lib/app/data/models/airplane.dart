@@ -2,7 +2,7 @@
 //
 //     final airPlane = airPlaneFromJson(jsonString);
 
-// Link = https://airplaneapisnodejs.herokuapp.com/dataPesawat
+// Link = https://apismodul.herokuapp.com/pesawat
 
 import 'dart:convert';
 
@@ -14,32 +14,32 @@ String airPlaneToJson(List<AirPlane> data) =>
 
 class AirPlane {
   AirPlane({
-    this.id,
     this.namaPesawat,
     this.keunggulan,
     this.gambar,
     this.harga,
+    this.id,
   });
 
-  int? id;
   String? namaPesawat;
   String? keunggulan;
   String? gambar;
-  int? harga;
+  String? harga;
+  String? id;
 
   factory AirPlane.fromJson(Map<String, dynamic> json) => AirPlane(
-        id: json["id"],
         namaPesawat: json["namaPesawat"],
         keunggulan: json["keunggulan"],
         gambar: json["gambar"],
         harga: json["harga"],
+        id: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "namaPesawat": namaPesawat,
         "keunggulan": keunggulan,
         "gambar": gambar,
         "harga": harga,
+        "id": id,
       };
 }

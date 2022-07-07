@@ -1,19 +1,15 @@
 import 'package:bookingapp/app/data/Providers/post_provider.dart';
+import 'package:bookingapp/app/data/models/airplane.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'data_http.dart';
 
-//Bagian Pesawat
-class CardPesawat extends StatefulWidget {
-  @override
-  State<CardPesawat> createState() => _CardPesawatState();
-}
+class DetailPesawat extends StatelessWidget {
+  final AirPlane airPlane;
+  DetailPesawat(this.airPlane);
 
-class _CardPesawatState extends State<CardPesawat> {
-  TextEditingController TanggalTerpilih = TextEditingController();
   TextEditingController nama = TextEditingController();
   TextEditingController keunggulan = TextEditingController();
   TextEditingController gambar = TextEditingController();
@@ -24,7 +20,7 @@ class _CardPesawatState extends State<CardPesawat> {
     PostProvider control = Provider.of<PostProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Data Pesawat"),
+        title: const Text("Detail Data Pesawat"),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -41,35 +37,6 @@ class _CardPesawatState extends State<CardPesawat> {
           const SizedBox(
             height: 20,
           ),
-          //Date Picker
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: TextField(
-              controller: TanggalTerpilih,
-              decoration: const InputDecoration(
-                  icon: Icon(Icons.calendar_today),
-                  labelText: "Masukkan Tanggal Berangkat"),
-              readOnly: true,
-              onTap: () async {
-                DateTime? pilihTanggal = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime(2030));
-
-                if (pilihTanggal != null) {
-                  String formattedDate =
-                      DateFormat('d-MM-yyyy').format(pilihTanggal);
-
-                  setState(() {
-                    TanggalTerpilih.text = formattedDate;
-                  });
-                } else {
-                  print("Data Kosong");
-                }
-              },
-            ),
-          ),
           const SizedBox(height: 15),
           //Text Nama
           Padding(
@@ -78,8 +45,8 @@ class _CardPesawatState extends State<CardPesawat> {
               child: TextField(
                 controller: nama,
                 autocorrect: false,
-                decoration: const InputDecoration(
-                  labelText: "Nama Maskapai",
+                decoration: InputDecoration(
+                  labelText: "${airPlane.namaPesawat}",
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -93,8 +60,8 @@ class _CardPesawatState extends State<CardPesawat> {
               child: TextField(
                 controller: keunggulan,
                 autocorrect: false,
-                decoration: const InputDecoration(
-                  labelText: "Deskripsi Maskapai",
+                decoration: InputDecoration(
+                  labelText: "${airPlane.keunggulan}",
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -108,8 +75,8 @@ class _CardPesawatState extends State<CardPesawat> {
               child: TextField(
                 controller: gambar,
                 autocorrect: false,
-                decoration: const InputDecoration(
-                  labelText: "URL Gambar",
+                decoration: InputDecoration(
+                  labelText: "${airPlane.gambar}",
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -123,28 +90,44 @@ class _CardPesawatState extends State<CardPesawat> {
               child: TextField(
                 controller: harga,
                 autocorrect: false,
-                decoration: const InputDecoration(
-                  labelText: "Harga",
+                decoration: InputDecoration(
+                  labelText: "${airPlane.harga}",
                   border: OutlineInputBorder(),
                 ),
               ),
             ),
           ),
           const SizedBox(height: 15),
-          //Button Cari
+          //Button Update
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Center(
               child: ElevatedButton(
                 onPressed: () {
-                  control.post(
+                  control.path(
                     nama.text,
                     keunggulan.text,
                     gambar.text,
                     harga.text,
+                    airPlane.id.toString(),
                   );
                 },
-                child: const Text("Submit"),
+                child: const Text("Update Data"),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          //Button Delete
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  control.delete(airPlane.id.toString());
+                },
+                child: const Text("Delete Data"),
               ),
             ),
           ),

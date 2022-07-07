@@ -1,4 +1,5 @@
 import 'package:bookingapp/app/controllers/auth_controller.dart';
+import 'package:bookingapp/app/data/Providers/post_provider.dart';
 import 'package:bookingapp/app/data/Providers/produk_provider.dart';
 import 'package:bookingapp/app/data/Providers/wishlist_provider.dart';
 import 'package:bookingapp/app/modules/home/views/home_view.dart';
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => WishlistProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PostProvider(),
         ),
       ],
       child: StreamBuilder<User?>(
